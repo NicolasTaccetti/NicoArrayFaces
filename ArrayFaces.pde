@@ -92,3 +92,93 @@ class Face {
         return value;
     }
 }
+
+int numCols = 3;  // Number of columns of faces
+int faceSize = 50; // Size of each face
+int total;        // Total value of all expressions
+//PImage alito, roberts, jackson, gorsuch, barrett, thomas, kagan, sotomayor, kavanaugh;
+String[] justices={"roberts", "thomas", "alito", "sotomayor", "kagan", "gorsuch", "kavanaugh", "barrett", "jackson"};
+double[] leanings={0.42,2.358,2.568,-4.09,-2.067,1.077,0.446,0.821};
+String courtRuling;
+
+void setup() {
+    size(600, 600);  // Set window size
+    noLoop();        // Ensures draw() only runs once
+
+
+    //alito = loadImage(");
+    //roberts = loadImage("2.png");
+    //jackson = loadImage("3.png");
+    //gorsuch = loadImage("4.png");
+    //barrett = loadImage("5.png");
+    
+
+    // Debugging: Check if images loaded
+    //if (f1 == null) println("Error loading 1.png");
+    //if (f2 == null) println("Error loading 2.png");
+    //if (f3 == null) println("Error loading 3.png");
+    //if (f4 == null) println("Error loading 4.png");
+    //if (f5 == null) println("Error loading 5.png");
+}
+
+void draw() {
+    background(0);  // Black background
+    total = 0;      // Reset total for each draw
+    courtRuling = "";
+
+    // Generate and display faces directly
+    for (int i = 0; i < numRows; i++) {
+        for (int j = 1; j <= numCols; j++) {
+            Justice justice = new Justice(3i+j);
+            justice.roll();
+            justice.show();
+            total += justice.getValue();
+        }
+    }
+
+    fill(255);
+    textSize(24);
+
+    // Assign correct vibe level
+}
+
+void mousePressed() {
+    redraw(); // Reset face expression when the mouse is pressed
+}
+
+class Justice {
+    int whichOne,leaning;
+    String name;
+    String[] rulingList={"Engel v. Vitale", "Brown v. Board", "Gideon v. Wainwright", "Mapp v. Ohio"}; 
+
+    Justice(int x) {
+        // The "this" keyword distinguishes instance variables from parameters with the same name
+        whichOne=x;
+        name=justices[x];
+        leaning=
+    }
+
+    public String roll() {
+        return rulingList[(int)(Math.random() * 4)]; // Generate random value from 1 to 5
+    }
+
+    void show() {
+        PImage img = null;
+        if (whichOne == 1) img = f1;
+        else if (value == 2) img = f2;
+        else if (value == 3) img = f3;
+        else if (value == 4) img = f4;
+        else if (value == 5) img = f5;
+        else if (whichOne==6)
+        else if (whichOne=7)
+        else if (whichOne=8
+        
+        if (img != null) {
+            image(img, x, y, faceSize, faceSize);
+        }
+    }
+
+    int getValue() {
+        return value;
+    }
+}
